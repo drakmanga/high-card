@@ -420,7 +420,7 @@ l'utente. Nessun test lo mostrava, perché tutti interrogavano con una parola so
 verificava la regola implementata, non l'uso che ne fa una persona. Il filtro è ora valutato per
 parole, ognuna delle quali deve trovare riscontro in almeno uno dei tre campi.
 
-Il settimo rilievo della prima passata — l'assenza di un vincolo di Unicità sull'email — è stato
+Il settimo rilievo della prima passata — l'assenza di un vincolo di unicità sull'email — è stato
 **dichiarato e non colmato**: si veda [plan.md, Decisione 5](plan.md#decisione-5--unicità-dellemail-limite-dichiarato-non-colmato).
 
 ## 3. Approcci adottati

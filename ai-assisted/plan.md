@@ -123,7 +123,7 @@ ritirato ha fatto emergere, entrambi corretti e mantenuti — in
 
 **Questione.** Due creazioni con la stessa email producono due utenti distinti: nè
 `UserServiceImpl.addUser` né `UserRepository.save` verificano i duplicati. Il README non chiede
-l'Unicità, ma per un archivio utenti resta una lacuna di integrità del dato. Introdurre il
+l'unicità, ma per un archivio utenti resta una lacuna di integrità del dato. Introdurre il
 vincolo o dichiararlo?
 
 **Decisione: dichiararlo in `IMPLEMENTATION.md`, senza introdurlo.**
@@ -131,7 +131,7 @@ vincolo o dichiararlo?
 **Motivazione.** Non è l'economia dell'intervento, è il punto in cui il vincolo andrebbe messo.
 Un controllo nel servizio — leggere e poi scrivere — è un *check-then-act*: due richieste
 concorrenti con la stessa email lo superano entrambe, perché fra la lettura e la scrittura non
-c'è atomicità. Sarebbe un controllo che sembra garantire l'Unicità senza garantirla, cioè
+c'è atomicità. Sarebbe un controllo che sembra garantire l'unicità senza garantirla, cioè
 peggio che nessun controllo. Il vincolo appartiene alla persistenza, dove può essere atomico:
 indice univoco su un database reale, `putIfAbsent` su una mappa indicizzata per email in quella
 simulata.

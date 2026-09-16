@@ -173,10 +173,10 @@ Il segreto di firma è letto da `JWT_SECRET`, con un valore di sviluppo come fal
 | 13 | `FakeDatabase`                        | `ArrayList` condiviso fra i thread di richiesta: una ricerca concorrente a una creazione sollevava `ConcurrentModificationException`                                                              |
 | 14 | `AuthServiceImpl`                     | password memorizzate in chiaro e cifrate a ogni login, con doppia operazione BCrypt                                                                                                               |
 | 15 | `GetUsersRequest` / `UserServiceImpl` | limite massimo di pagina definito due volte, destinato a divergere                                                                                                                                |
-| 16 | `GlobalExceptionHandler`              | verbo non mappato segnalato come errore interno 500 anzichè 405                                                                                                                                   |
+| 16 | `GlobalExceptionHandler`              | verbo non mappato segnalato come errore interno 500 anziché 405                                                                                                                                   |
 | 17 | `GlobalExceptionHandler`              | gli errori di conversione esponevano al client il nome completo delle classi interne                                                                                                              |
 | 18 | `UserController`                      | il `guid` prodotto da `AddUserResult` veniva scartato: la creazione rispondeva senza identificativo, e il client non poteva referenziare l'utente appena creato                                   |
-| 19 | `GlobalExceptionHandler`              | `Content-Type` assente o non gestito segnalato come errore interno 500 anzichè 415                                                                                                                |
+| 19 | `GlobalExceptionHandler`              | `Content-Type` assente o non gestito segnalato come errore interno 500 anziché 415                                                                                                                |
 | 20 | `SecurityConfig`                      | la regola finale `authenticated()` lasciava passare a qualunque utente autenticato le varianti del percorso di scrittura (slash finale, maiuscole), che non incontrano il matcher per path esatto |
 | 21 | `SecurityConfig`                      | `JwtAuthenticationFilter`, essendo un bean `Filter`, veniva registrato anche dal servlet container su tutti i percorsi, quindi fuori dalla catena di sicurezza                                    |
 | 22 | `GlobalExceptionHandler`              | il log degli errori di validazione riportava i valori rifiutati, cioè email, telefono e nome dell'utente                                                                                          |
@@ -221,10 +221,10 @@ produceva un errore interno `500` invece di un `405`, e gli errori di conversion
 restituivano al client il nome completo delle classi interne. **Entrambe le correzioni sono state
 mantenute.**
 
-### Limite noto e deliberatamente non colmato: Unicità dell'email
+### Limite noto e deliberatamente non colmato: unicità dell'email
 
 Due creazioni con la stessa email producono due utenti distinti: nè `UserServiceImpl.addUser`
-nè `UserRepository.save` verificano i duplicati. La specifica non richiede l'Unicità, e per un
+nè `UserRepository.save` verificano i duplicati. La specifica non richiede l'unicità, e per un
 archivio utenti resta comunque una lacuna di integrità del dato, quindi la si dichiara.
 
 **Decisione: non introdurre il vincolo.** La ragione non è l'economia dell'intervento, ma il
@@ -276,7 +276,7 @@ validazione è duplicata: Bean Validation come primo filtro sul bordo HTTP, ma l
 servizio.
 
 **4. Rischio concreto di esposizione involontaria.** Gli oggetti web sono serializzati verso
-l'esterno. Se sono gli stessi che circolano nel dominio, ogni campo aggiunto per necessita'
+l'esterno. Se sono gli stessi che circolano nel dominio, ogni campo aggiunto per necessità
 interna diventa un campo pubblicato per default — e quasi sempre nessuno se ne accorge, perché
 non c'è un punto in cui la decisione "questo si espone" viene presa esplicitamente.
 Gli assembler sono quel punto.
