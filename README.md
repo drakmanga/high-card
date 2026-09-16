@@ -125,3 +125,13 @@ Add an `/ai-assisted/` folder to your repository containing one or more Markdown
 - The AI is not required to have completed the tasks correctly — the goal is to document the *process*, not the outcome.
 - Honest criticism is appreciated: a report that describes the tool's failures is more valuable than one that only highlights its successes.
 - If you used multiple tools, you may create separate subfolders (`/ai-assisted/claude-code/`, `/ai-assisted/gemini-cli/`, etc.)
+
+---
+
+## ✅ Svolgimento
+
+- **[IMPLEMENTATION.md](IMPLEMENTATION.md)** — riepilogo task per task, istruzioni di avvio e risposta alla domanda di approfondimento
+- **[/ai-assisted/](ai-assisted/)** — documentazione del processo di collaborazione con l'AI
+  - [pre-analysis.md](ai-assisted/pre-analysis.md) — analisi preliminare e limiti riscontrati
+  - [plan.md](ai-assisted/plan.md) — piano di intervento e iterazioni
+  - [report.md](ai-assisted/report.md) — report finale, metodo ed errori
