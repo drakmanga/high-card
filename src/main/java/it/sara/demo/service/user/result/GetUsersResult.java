@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Esito della ricerca utenti: pagina di risultati e totale complessivo.
+ */
 @Getter
 @Setter
 public class GetUsersResult extends GenericPagedResult {

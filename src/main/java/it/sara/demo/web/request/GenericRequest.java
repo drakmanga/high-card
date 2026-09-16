@@ -1,9 +1,7 @@
 package it.sara.demo.web.request;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+/**
+ * Base comune delle richieste esposte sul web.
+ */
 public class GenericRequest {
 }

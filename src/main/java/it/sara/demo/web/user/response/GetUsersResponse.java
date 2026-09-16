@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Risposta della ricerca utenti.
+ */
 @Getter
 @Setter
 public class GetUsersResponse extends GenericPagedResponse {

@@ -3,23 +3,25 @@ package it.sara.demo.service.database;
 import it.sara.demo.service.database.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
 
 @Component
 public class UserRepository {
 
+    /**
+     * Persiste un nuovo utente assegnandogli un identificativo univoco.
+     */
     public boolean save(User user) {
+        if (user == null) {
+            return false;
+        }
         user.setGuid(java.util.UUID.randomUUID().toString());
-        FakeDatabase.TABLE_USER.add(user);
-        return true;
-    }
-
-    public Optional<User> getByGuid(String guid) {
-        return FakeDatabase.TABLE_USER.stream().filter(u -> u.getGuid().equals(guid)).findFirst();
+        return FakeDatabase.TABLE_USER.add(user);
     }
 
     public List<User> getAll() {
-        return FakeDatabase.TABLE_USER;
+        return Collections.unmodifiableList(FakeDatabase.TABLE_USER);
     }
 }

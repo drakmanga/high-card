@@ -1,9 +1,10 @@
 package it.sara.demo.service.criteria;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+/**
+ * Base comune dei criteri di input del layer di servizio.
+ * <p>
+ * Esiste per tenere separato il contratto applicativo dal contratto esposto
+ * sul web: i servizi accettano criteri, mai oggetti di richiesta HTTP.
+ */
 public class GenericCriteria {
 }

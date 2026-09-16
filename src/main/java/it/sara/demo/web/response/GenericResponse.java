@@ -4,17 +4,30 @@ import it.sara.demo.dto.StatusDTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
+/**
+ * Risposta base esposta dal layer web.
+ * <p>
+ * Ogni risposta, anche di errore, viaggia con HTTP 200 e riporta l'esito
+ * applicativo dentro {@link StatusDTO}.
+ */
 @Getter
 @Setter
 public class GenericResponse {
+
+    public static final int SUCCESS_CODE = 200;
+
     private StatusDTO status;
 
-    public static GenericResponse success(String message) {
-        GenericResponse returnValue = new GenericResponse();
-        returnValue.setStatus(new StatusDTO());
-        returnValue.getStatus().setCode(200);
-        returnValue.getStatus().setMessage(message != null ? message : "Success");
-        returnValue.getStatus().setTraceId(java.util.UUID.randomUUID().toString());
-        return returnValue;
+    /**
+     * Costruisce lo stato applicativo con identificativo di tracciamento univoco.
+     */
+    public static StatusDTO buildStatus(int code, String message) {
+        StatusDTO status = new StatusDTO();
+        status.setCode(code);
+        status.setMessage(message);
+        status.setTraceId(UUID.randomUUID().toString());
+        return status;
     }
 }

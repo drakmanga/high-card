@@ -1,9 +1,7 @@
 package it.sara.demo.service.result;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+/**
+ * Base comune dei risultati restituiti dal layer di servizio.
+ */
 public class GenericResult {
 }
